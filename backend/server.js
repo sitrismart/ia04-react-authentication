@@ -5,7 +5,7 @@ const authRoutes = require('./routes/auth');
 const protectedRoutes = require('./routes/protected');
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 // CORS configuration for production and development
 const corsOptions = {
