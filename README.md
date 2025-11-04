@@ -186,7 +186,7 @@ Notes:
 ### 📦 Example Login Credentials
 | Email             | Password |
 |-------------------|-----------|
-| user@example.com  | password123 |
+| user@example.com  | user123 |
 
 ### 💡 Evaluation Checklist
 - ✅ Access & Refresh token flow  

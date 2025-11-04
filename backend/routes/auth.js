@@ -9,7 +9,7 @@ router.use(bodyParser.json());
 let refreshTokensStore = new Set();
 
 // Dummy user check — in real app validate credentials against DB
-const USERS = [{ id: 1, email: 'user@example.com', password: 'password123', name: 'Demo User' }];
+const USERS = [{ id: 1, email: 'user@example.com', password: 'user123', name: 'Demo User' }];
 
 router.post('/login', (req, res) => {
   const { email, password } = req.body;
