@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { setAccessToken as setAccessTokenInApi, clearAccessToken as clearAccessTokenInApi, setOnRefreshFail } from '../api/axios';
+import { setAccessToken as setAccessTokenInApi, clearAccessToken as clearAccessTokenInApi } from '../api/axios';
 import api from '../api/axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AuthContext } from './AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 export function AuthProvider({ children }) {
   const [accessToken, setAccessToken] = useState(null);
@@ -45,25 +44,6 @@ export function AuthProvider({ children }) {
       }
     }
   });
-
-  const navigate = useNavigate();
-
-  // Register handler to be called when token refresh fails in axios
-  useEffect(() => {
-    setOnRefreshFail(async () => {
-      try {
-        // try to call logout mutation to clear server-side refresh token
-        await logoutMutation.mutateAsync();
-      } catch {
-        // ignore
-      } finally {
-        // ensure client redirected to login
-        navigate('/login');
-      }
-    });
-
-    return () => setOnRefreshFail(null);
-  }, [logoutMutation, navigate]);
 
   const value = {
     accessToken,

@@ -17,10 +17,6 @@ export function getAccessToken() { return accessTokenMemory; }
 // Refresh control to avoid parallel refresh calls
 let isRefreshing = false;
 let failedQueue = [];
-// Optional handler to call when refresh fails (e.g. to trigger logout)
-let onRefreshFail = null;
-
-export function setOnRefreshFail(fn) { onRefreshFail = fn; }
 
 const processQueue = (error, token = null) => {
   failedQueue.forEach(prom => {
@@ -48,8 +44,6 @@ api.interceptors.response.use(response => response, async error => {
 
     const refreshToken = localStorage.getItem('refreshToken');
     if (!refreshToken) {
-      // no refresh token -> notify app-level handler
-      if (onRefreshFail) onRefreshFail();
       return Promise.reject(error);
     }
 
@@ -79,10 +73,7 @@ api.interceptors.response.use(response => response, async error => {
     } catch (err) {
       processQueue(err, null);
       isRefreshing = false;
-      // refresh failed -> notify app-level handler so it can logout/redirect
-      if (onRefreshFail) {
-        try { onRefreshFail(); } catch { /* ignore errors from handler */ }
-      }
+      // refresh failed -> user should log out at app-level
       return Promise.reject(err);
     }
   }
