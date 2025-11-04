@@ -96,70 +96,78 @@ backend/
 
 ## ⚙️ Local Development Setup
 
-### 1️⃣ Clone repos
+### 1️⃣ Clone repo
 ```
-git clone https://github.com/<your-username>/jwt-auth-backend.git
-git clone https://github.com/<your-username>/jwt-auth-frontend.git
+git clone https://github.com/sitrismart/ia04-react-authentication.git
 ```
 
 ### 2️⃣ Backend setup
 ```
-cd jwt-auth-backend
+cd backend
 npm install
 ```
-Create .env:
+Create `.env` (names must match `backend/utils/tokens.js`):
 ```
-ACCESS_SECRET=access_secret_key
-REFRESH_SECRET=refresh_secret_key
-PORT=5000
+ACCESS_TOKEN_SECRET=access_secret_key
+REFRESH_TOKEN_SECRET=refresh_secret_key
+ACCESS_TOKEN_EXPIRES_IN=15m   # optional
+REFRESH_TOKEN_EXPIRES_IN=7d   # optional
+PORT=4000
 ```
 Run:
 ```
 npm start
 ```
-➡ Server runs at: http://localhost:5000
+- Server runs at: http://localhost:4000
 
 ### 3️⃣ Frontend setup
 ```
-cd jwt-auth-frontend
+cd frontend
 npm install
 ```
-Create .env:
+Create `.env`:
 ```
-VITE_API_URL=http://localhost:5000
+VITE_API_URL=http://localhost:4000
 ```
 Run:
 ```
 npm run dev
 ```
-➡ App runs at: http://localhost:5173
+- App runs at: http://localhost:5173
 
 ### ☁️ Deployment Guide
 
+This repository is a monorepo that contains both `backend/` and `frontend/`. Push the single repository to GitHub (for example `sitrismart/ia04-react-authentication`). When you create services on hosting platforms, point the service to the repository and set the project Root / Root Directory to the appropriate subfolder (`backend` for the API, `frontend` for the web app). If the platform doesn't support selecting a root directory, you can use prefix install/start commands shown below.
+
 🔹 **Deploy Backend (Render)**
-- Push backend to GitHub → `jwt-auth-backend`
-- Go to Render.com
-- Create New Web Service
-- Connect your repo
-- **Build command:** `npm install`
-- **Start command:** `npm start`
-- Add environment variables:
+- Push this repository to GitHub and connect the repo in Render.
+- During service creation either:
+   - Set "Root Directory" to `backend` (recommended), then use Build command: `npm install` and Start command: `npm start`.
+   - Or keep the repo root and use these commands instead:
+      - Build command: `npm install --prefix backend`
+      - Start command: `npm --prefix backend start`
+- Add environment variables (names must match `backend/utils/tokens.js`):
 ```
-ACCESS_SECRET=your_access_secret
-REFRESH_SECRET=your_refresh_secret
+ACCESS_TOKEN_SECRET=your_access_secret
+REFRESH_TOKEN_SECRET=your_refresh_secret
+ACCESS_TOKEN_EXPIRES_IN=15m
+REFRESH_TOKEN_EXPIRES_IN=7d
+PORT=4000
 ```
-- **Deploy:** copy the deployed URL  
-  e.g. `https://jwt-auth-backend.onrender.com`
+- Deploy and copy the backend URL (e.g. `https://your-backend.onrender.com`).
 
 🔹 **Deploy Frontend (Vercel)**
-- Push frontend to GitHub → `jwt-auth-frontend`
-- Go to Vercel
-- Import your frontend repo
-- Add Environment Variable:
+- On Vercel, Import Project → select the same GitHub repo → In Import Settings set "Root Directory" to `frontend`.
+- Framework Preset: Vite (auto-detected). Build Command: `npm run build`. Output Directory: `dist`.
+- Add environment variable (pointing to your backend deployment):
 ```
-VITE_API_URL=https://jwt-auth-backend.onrender.com
+VITE_API_URL=https://your-backend.onrender.com
 ```
-- **Deploy:** Vercel auto builds with `npm run build`
+- Deploy. Vercel will install and build the `frontend` subfolder and serve the app.
+
+Notes:
+- If your hosting provider doesn't let you pick a subdirectory, using `--prefix <folder>` (npm) in build/start commands is a reliable alternative.
+- For CI/CD you can also configure the pipeline to run only in the chosen subfolder.
 
 
 ### 🧩 Key Files
@@ -178,7 +186,7 @@ VITE_API_URL=https://jwt-auth-backend.onrender.com
 ### 📦 Example Login Credentials
 | Email             | Password |
 |-------------------|-----------|
-| test@example.com  | 123456    |
+| user@example.com  | password123 |
 
 ### 💡 Evaluation Checklist
 - ✅ Access & Refresh token flow  
