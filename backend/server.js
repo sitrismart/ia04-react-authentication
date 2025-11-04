@@ -5,7 +5,7 @@ const authRoutes = require('./routes/auth');
 const protectedRoutes = require('./routes/protected');
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use(express.json());

@@ -112,13 +112,13 @@ ACCESS_TOKEN_SECRET=access_secret_key
 REFRESH_TOKEN_SECRET=refresh_secret_key
 ACCESS_TOKEN_EXPIRES_IN=15m   # optional
 REFRESH_TOKEN_EXPIRES_IN=7d   # optional
-PORT=4000
+PORT=3000
 ```
 Run:
 ```
 npm start
 ```
-- Server runs at: http://localhost:4000
+- Server runs at: http://localhost:3000
 
 ### 3️⃣ Frontend setup
 ```
@@ -127,7 +127,7 @@ npm install
 ```
 Create `.env`:
 ```
-VITE_API_URL=http://localhost:4000
+VITE_API_URL=http://localhost:3000
 ```
 Run:
 ```
@@ -152,7 +152,7 @@ ACCESS_TOKEN_SECRET=your_access_secret
 REFRESH_TOKEN_SECRET=your_refresh_secret
 ACCESS_TOKEN_EXPIRES_IN=15m
 REFRESH_TOKEN_EXPIRES_IN=7d
-PORT=4000
+PORT=3000
 ```
 - Deploy and copy the backend URL (e.g. `https://your-backend.onrender.com`).
 
