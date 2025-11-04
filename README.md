@@ -25,10 +25,10 @@ The app uses **Access Tokens** (stored in memory) and **Refresh Tokens** (stored
 
 ## 🌐 Live Demo
 
-| Part | URL | Status |
-|------|-----|---------|
-| **Frontend (React App)** | 🔗 [Deploy to Vercel](#deploy-frontend-vercel) | ⚠️ Update with your URL |
-| **Backend (API Server)** | 🔗 [Deploy to Render](#deploy-backend-render) | ⚠️ Update with your URL |
+| Part | URL |
+|------|-----|
+| **Frontend (React App)** | 🔗 [Deploy to Vercel](https://ia04-react-authentication.vercel.app) |
+| **Backend (API Server)** | 🔗 [Deploy to Render](https://ia04-react-authentication.onrender.com) |
 
 > **Note**: Replace the placeholder URLs above with your actual deployment URLs after completing the deployment steps.
 
@@ -59,8 +59,6 @@ The app uses **Access Tokens** (stored in memory) and **Refresh Tokens** (stored
 ---
 
 ## 🧠 Folder Structure
-
-### Frontend
 ```
 frontend/
 │
@@ -81,10 +79,6 @@ frontend/
 ├── .env
 ├── package.json
 └── vite.config.js
-```
-
-### Backend
-```
 backend/
 │
 ├── server.js
@@ -156,14 +150,14 @@ ACCESS_TOKEN_EXPIRES_IN=15m
 REFRESH_TOKEN_EXPIRES_IN=7d
 PORT=3000
 ```
-- Deploy and copy the backend URL (e.g. `https://your-backend.onrender.com`).
+- Deploy and copy the backend URL (e.g. `https://ia04-react-authentication.onrender.com`).
 
 🔹 **Deploy Frontend (Vercel)**
 - On Vercel, Import Project → select the same GitHub repo → In Import Settings set "Root Directory" to `frontend`.
 - Framework Preset: Vite (auto-detected). Build Command: `npm run build`. Output Directory: `dist`.
 - Add environment variable (pointing to your backend deployment):
 ```
-VITE_API_URL=https://your-backend.onrender.com
+VITE_API_URL=https://ia04-react-authentication.onrender.com
 ```
 - Deploy. Vercel will install and build the `frontend` subfolder and serve the app.
 
