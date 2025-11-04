@@ -5,9 +5,18 @@ const authRoutes = require('./routes/auth');
 const protectedRoutes = require('./routes/protected');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+// CORS configuration for production and development
+const corsOptions = {
+  origin: [
+    'http://localhost:5173', // Development
+    'https://ia04-react-authentication.vercel.app',
+  ].filter(Boolean),
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use('/auth', authRoutes);

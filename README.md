@@ -25,10 +25,12 @@ The app uses **Access Tokens** (stored in memory) and **Refresh Tokens** (stored
 
 ## 🌐 Live Demo
 
-| Part | URL |
-|------|-----|
-| **Frontend (React App)** | 🔗 [https://jwt-auth-frontend.vercel.app](https://jwt-auth-frontend.vercel.app) |
-| **Backend (API Server)** | 🔗 [https://jwt-auth-backend.onrender.com](https://jwt-auth-backend.onrender.com) |
+| Part | URL | Status |
+|------|-----|---------|
+| **Frontend (React App)** | 🔗 [Deploy to Vercel](#deploy-frontend-vercel) | ⚠️ Update with your URL |
+| **Backend (API Server)** | 🔗 [Deploy to Render](#deploy-backend-render) | ⚠️ Update with your URL |
+
+> **Note**: Replace the placeholder URLs above with your actual deployment URLs after completing the deployment steps.
 
 ---
 
