@@ -57,7 +57,7 @@ export default function Dashboard() {
             <div className="bg-linear-to-r from-indigo-600 to-purple-600 px-6 py-8">
               <div className="flex items-center">
                 <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-                  <User className="w-8 h-8 text-white" />
+                  <img src={`https://avatars.githubusercontent.com/u/112542306?v=4`} alt="User Avatar" className="w-16 h-16 rounded-full" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-white">User Profile</h2>
@@ -176,23 +176,7 @@ export default function Dashboard() {
                 </div>
               )}
             </div>
-          </div>
-
-          {/* Info Card */}
-          <div className="bg-blue-50 rounded-2xl p-6 border border-blue-200">
-            <div className="flex items-start">
-              <Info className="w-6 h-6 text-blue-500 mr-3 mt-0.5 shrink-0" />
-              <div>
-                <h4 className="text-lg font-semibold text-blue-900 mb-2">Authentication Information</h4>
-                <div className="text-blue-700 space-y-1">
-                  <p>✨ Your session is secured with JWT authentication</p>
-                  <p>✨ Access tokens are stored in memory for security</p>
-                  <p>✨ Refresh tokens enable seamless session renewal</p>
-                  <p>✨ Protected routes ensure authorized access only</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          </div>     
         </div>
       </main>
     </div>

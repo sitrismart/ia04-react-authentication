@@ -133,7 +133,7 @@ npm run dev
 
 ### ☁️ Deployment Guide
 
-This repository is a monorepo that contains both `backend/` and `frontend/`. Push the single repository to GitHub (for example `sitrismart/ia04-react-authentication`). When you create services on hosting platforms, point the service to the repository and set the project Root / Root Directory to the appropriate subfolder (`backend` for the API, `frontend` for the web app). If the platform doesn't support selecting a root directory, you can use prefix install/start commands shown below.
+This repository is a monorepo that contains both `backend/` and `frontend/`. Push the single repository to GitHub (for example `sitrismart/ia04-react-authentication`). When you create services on hosting platforms, point the service to the repository and set the project Root / Root Directory to the appropriate subfolder (`backend` for the API, `frontend` for the web app).
 
 🔹 **Deploy Backend (Render)**
 - Push this repository to GitHub and connect the repo in Render.
@@ -160,11 +160,6 @@ PORT=3000
 VITE_API_URL=https://ia04-react-authentication.onrender.com
 ```
 - Deploy. Vercel will install and build the `frontend` subfolder and serve the app.
-
-Notes:
-- If your hosting provider doesn't let you pick a subdirectory, using `--prefix <folder>` (npm) in build/start commands is a reliable alternative.
-- For CI/CD you can also configure the pipeline to run only in the chosen subfolder.
-
 
 ### 🧩 Key Files
 - **src/api/axios.js**: Handles Axios instance + JWT refresh logic  
